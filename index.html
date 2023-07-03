@@ -10,7 +10,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Alpine Core -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js"></script>
 </head>
@@ -22,9 +22,12 @@
             task: null,
             todos: $persist([]),
             add(){
-                this.todos.push({
-                    data: this.task, 
-                }),
+                this.todos.push(
+                    {
+                    data: this.task,
+                    complete: false
+                }
+                ),
                 this.task= "";
             },
            
@@ -65,6 +68,16 @@
                 </template>
 
             </div>
+            <div x-data="{tabs: ['All Tasks', 'Completed Tasks', 'Active Tasks']}">
+                <div>
+                    <template x-for="tab in tabs">
+                         <div x-text="tab"></div>
+                    </template>
+                </div>
+
+
+            </div>
+            <div ></div>
         </div>
     </div>
 
