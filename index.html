@@ -34,30 +34,36 @@
 
         }' style="display: flex; gap: 200px;">
             <div>
-                <label for="01">Add your To-Do's</label><br><br>
-                <input id="01" type="text" x-model="task" placeholder="todo"
-                    class="border-solid border-4 border-blue-300"><br><br>
-                <Button type="submit" class="py-2 px-6 bg-blue-600 hover:bg-opacity-50 text-white rounded-md shadow" @click="add">
-                    Add
-                </Button><br><br>
-                <p x-text="task"></p>
-                <p x-text="todos.data"></p>
+                <form>
+                    <label for="01">Add your To-Do's</label><br><br>
+                    <input id="01" type="text" x-model="task" placeholder="todo"
+                        class="border-solid border-4 border-blue-300"><br><br>
+                    <Button type="submit" class="py-2 px-6 bg-blue-600 hover:bg-opacity-50 text-white rounded-md shadow"
+                        @click="add">
+                        Add
+                    </Button><br><br>
+                    <p x-text="task"></p>
+                    <p x-text="todos.data"></p>
+                </form>
             </div>
 
 
             <div>
                 <p>find your To-Do's below:</p>
-                
+
 
                 <template x-for="(todo, index) in todos" :key="index">
                     <p>
                         <a class="py-1 px-2 hover:bg-blue-200 block  flex items-center justify-between">
                             <span x-data="{
                                 completed: false,
-                            }"><input type="checkbox" class="item-center mr-4 cursor-pointer" @click="completed= !completed"> <span x-text="todo.data" :style=" completed ? 'text-decoration:line-through' : '' "></span> </span>
-                            
-                            <button @click="todos.splice(index, 1)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex ml-10 cursor-pointer">
+                            }"><input type="checkbox" class="item-center mr-4 cursor-pointer"
+                                    @click="completed= !completed"> <span x-text="todo.data"
+                                    :style=" completed ? 'text-decoration:line-through' : '' "></span> </span>
+
+                            <button @click="todos.splice(index, 1)"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                    class="w-5 h-5 flex ml-10 cursor-pointer">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -71,13 +77,13 @@
             <div x-data="{tabs: ['All Tasks', 'Completed Tasks', 'Active Tasks']}">
                 <div>
                     <template x-for="tab in tabs">
-                         <div x-text="tab"></div>
+                        <div x-text="tab"></div>
                     </template>
                 </div>
 
 
             </div>
-            <div ></div>
+            <div></div>
         </div>
     </div>
 
